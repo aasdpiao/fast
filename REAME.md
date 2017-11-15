@@ -6,23 +6,22 @@
 ~/fast$ tree -d
 .
 ├── 3rd          -- 第3方依赖项目，包括skynet
+
 ├── build        -- 编译后的结果目录。实际部署时需要
+
 ├── config       -- 启动配置项
+
 ├── daobiao      -- 游戏配置。由策划配置XLS, 工具生成对应的Lua文件
+
 ├── luaclib      -- 游戏相关，C语言实现的Lua库
+
 ├── lualib       -- 游戏相关的Lua库
-│   ├── base
-│   ├── os
-│   └── rpc
+
 ├── proto        -- protobuf 描述文件，跟客户端交互
-├── service      -- skynet服务代码
-│   ├── agent
-│   ├── dictator
-│   ├── gamedb
-│   ├── pbc
-│   ├── share
-│   └── watchdog
-└── test         -- 测试代码, 包括客户端实现
+
+├── service      -- skynet服务代码
+
+└── test         -- 测试代码, 包括客户端实现
 
 ## 命令行
 
