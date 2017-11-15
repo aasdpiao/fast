@@ -1,0 +1,32 @@
+message Head
+{
+    optional uint32 result = 1;   // 错误码， 0标识正常
+    optional string errmsg = 2;   // 错误描述信息
+}
+
+//--------------------------------
+// 登陆请求, 第一条协议
+message LoginReq
+{
+    optional string sdkid = 1;     // 区分平台
+    optional string username = 2;   // 平台账号
+    optional string token = 3;     // 用于校验用户合法性
+}
+
+message LoginRsp
+{
+    optional Head head = 1;
+    optional uint32 account = 2;    // [sdkid+username] 对应唯一的账号id
+}
+
+//--------------------------------
+// 获取用户数据
+message GetUserReq
+{
+    optional uint32 account = 1;
+}
+
+message GetUserRsp
+{
+    optional Head head = 1;
+}

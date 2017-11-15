@@ -1,0 +1,32 @@
+------------------ skynet 配置 ------------------
+root = "./"
+thread = 8
+logger = nil
+harbor = 0
+start = "gs_launcher"
+bootstrap = "snlua bootstrap"	-- The service for bootstrap
+
+outdir = root .. "build/"
+
+luaservice = root.."service/?.lua;"..root.."service/?/main.lua;" ..outdir.."service/?.lua;"
+lua_path = root.."lualib/?.lua;" ..outdir.."lualib/?.lua;"
+lua_cpath = root.."luaclib/?.so;" ..outdir.."luaclib/?.so"
+cpath = root.."cservice/?.so;" ..outdir.."cservice/?.so"
+lualoader = outdir.."lualib/loader.lua"
+preload = root.."lualib/base/preload.lua"
+
+------------------ 游戏配置目录 ------------
+sharedata_dir = root .. "daobiao/"
+
+----------------- 客户端协议 ---------------
+proto_dir = outdir .. "proto"
+
+-----------------  管理工具, 支持热更新  --------------
+dictator_port = 7002
+
+
+--------------- 数据库配置文件 --------------------
+gamedb = './config/gamedb.conf'
+
+-------------- gate 配置文件 (配合 watchdog, agent) -------------------
+gateconf = "./config/gate.conf"

@@ -1,0 +1,9 @@
+[submodule "3rd/skynet"]
+	path = 3rd/skynet
+	url = https://github.com/cloudwu/skynet
+[submodule "3rd/luafilesystem"]
+	path = 3rd/luafilesystem
+	url = https://github.com/keplerproject/luafilesystem
+[submodule "3rd/pbc"]
+	path = 3rd/pbc
+	url = https://github.com/cloudwu/pbc
