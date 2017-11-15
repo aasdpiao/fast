@@ -26,29 +26,29 @@
 编译项目
 
 ```
-~/fast$ make
+    $ make
 ```
 
 运行skynet进程
 
 ```
-    ./build/bin/skynet config/gs_config
+    $ ./build/bin/skynet config/gs_config
 ```
 
 运行客户端
 
 ```
-    ./build/bin/lua test/client.lua
+    $ ./build/bin/lua test/client.lua
 ```
 
 ## 当前支持的服务
 
-* dictator, 游戏后台控制。现在支持发送热更新指令
+* dictator, 游戏后台控制。
 * [share](https://github.com/cloudwu/skynet/wiki/ShareData), 这个服务用来更新游戏配置
-* [pbc](https://github.com/cloudwu/pbc), 这个服务用来protobuf协议编解码。
+* [pbc](https://github.com/cloudwu/pbc), protobuf协议编解码。
 * gamedb, 游戏存储代理。当前支持Redis。
 * watchdog & gate & agent. 每个客户端在watchdog 安全验证通过后，会分配绑定唯一的agent.
-  游戏业务代码主要在 agent 里。
+  游戏业务代码主要在 agent 里实现。
 
 ## 热更新
 
@@ -68,12 +68,12 @@ call_svr pbc reload    # 输入：热更新协议
 OK                     # 输出结果
 call_svr agent reload  # 输入：热更新逻辑代码
 
-# 同样，call_svr share reload 就可以更新游戏配置了
+# call_svr share reload 更新游戏配置
 ```
 
 热更新建议
 
-* 因为对性能影响很大。请只用在测试环境中。
+* 因为对性能影响很大。只用在测试环境中。
 * 部署定时任务，通过检查 proto, Lua 文件是否改变，进行触发reload
 
 ## 模拟客户端
@@ -105,7 +105,9 @@ send|GetUserReq|{account=100}
 ## 如何写业务代码
 
 * 定制登陆过程。 文件 watchdog/main.lua 里的 sock_handler["LoginReq"] 函数。
-* 增加新协议的处理函数。例如针对 GetUserReq， 在 agent/agentobj.lua 里增加新函数  CAgent:OnGetUserReq 就可以了。
+* 增加新协议的处理函数。
+  例如针对 GetUserReq， 在 agent/agentobj.lua 里增加新处理函数  CAgent:OnGetUserReq。
+* 改变代码后，通过 dictator 进行热更新
 
 ## todo
 
